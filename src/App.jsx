@@ -1,6 +1,8 @@
 import Header from './Components/Header/Header'
 import './App.css'
+import src from './Images/Notes.png'
 import { Outlet } from 'react-router'
+import { NavLink } from 'react-router-dom'
 
 function App() {
   
@@ -9,7 +11,9 @@ function App() {
     <>
      <Header />
      <Outlet/>
-     <a className=' grid  place-items-center h-[10vh] w-[10vw] rounded-full fixed bottom-5 right-5 border-black border-2'> <img src="./images/pen.png" alt="Add Notes" /></a>
+     <button>
+      <NavLink to="Todo" className=' grid  place-items-center h-[13vh] w-[13vh] rounded-full fixed bottom-10 right-10 border-black border-2'> <img src={src} className='h-[4rem] w-[4rem]' alt="Add Notes" /> </NavLink>
+     </button>
     </>
   )
 }
