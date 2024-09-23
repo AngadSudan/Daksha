@@ -2,7 +2,7 @@ import React from 'react'
 
 function Doubts() {
   return (
-    <div>Doubts</div>
+    <div className='w-full h-screen'>Doubts</div>
   )
 }
 

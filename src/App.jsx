@@ -9,6 +9,7 @@ function App() {
     <>
      <Header />
      <Outlet/>
+     <a className=' grid  place-items-center h-[10vh] w-[10vw] rounded-full fixed bottom-5 right-5 border-black border-2'> <img src="./images/pen.png" alt="Add Notes" /></a>
     </>
   )
 }
