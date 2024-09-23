@@ -12,7 +12,7 @@ function App() {
      <Header />
      <Outlet/>
      <button>
-      <NavLink to="Todo" className=' grid  place-items-center h-[13vh] w-[13vh] rounded-full fixed bottom-10 right-10 border-black border-2'> <img src={src} className='h-[4rem] w-[4rem]' alt="Add Notes" /> </NavLink>
+      <NavLink to="Todo" className='hover:bg-pink-50 hover:scale-110 grid  place-items-center h-[13vh] w-[13vh] rounded-full fixed bottom-10 right-10 border-black border-2'> <img src={src} className='h-[4rem] w-[4rem]' alt="Add Notes" /> </NavLink>
      </button>
     </>
   )

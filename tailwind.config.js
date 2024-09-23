@@ -14,7 +14,7 @@ export default {
         },
       },
       animation: {
-        gradient: 'gradient 3s ease infinite',
+        gradient: 'gradient 8s ease infinite',
       },
     }
   },

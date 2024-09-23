@@ -4,7 +4,7 @@ import { UseSlideChild, } from '../GsapAnimations/Animations'
 function Landing() {
   const SlideChildRef= UseSlideChild();
   return (
-    <div className='bg-gradient-to-r from-pink-50 via-white to-pink-100 animate-gradient'>
+    <div className='bg-gradient-to-r from-pink-100 via-zinc-100 to-pink-100 animate-gradient'>
       <Header />
       <div className='h-[100svh] w-screen grid place-items-center'>
         <div >
