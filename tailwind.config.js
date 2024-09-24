@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'about':'url(./src/Images/Daksh_About.jpg)'
+      },
       keyframes: {
         gradient: {
           '0%': { 'background-position': '0% 50%' },
