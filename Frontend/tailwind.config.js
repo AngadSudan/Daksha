@@ -10,7 +10,8 @@ export default {
         '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
       },
       backgroundImage: {
-        'about':'url(./src/Images/Daksh_About.jpg)'
+        'about':'url(./src/Images/Daksh_About.jpg)',
+        'dune':"url('https://prod.spline.design/BEjFzkmTmQfgT0gV/scene.splinecode')"
       },
       keyframes: {
         gradient: {

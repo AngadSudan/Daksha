@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import TodoItem from '../Components/TodoItem/TodoItem';
-
+import { motion } from 'framer-motion';
 function Todo() {
 
   const [Status, setStatus ]= useState(false);
@@ -18,6 +18,10 @@ function Todo() {
       setStatus(true);
     }
   }
+  const Delete=(index)=>{
+    localStorage.removeItem(index+1);
+    setCounter(counter-1);
+}
   const [counter, setCounter]= useState(0);
 
   //Form submission function
@@ -39,15 +43,32 @@ function Todo() {
   },[counter])
   return (
     <>
-    <form onSubmit={submission} className='h-[6rem] mt-8 w-full p-4'>
+    <motion.form
+     onSubmit={submission} 
+     className='h-[6rem] mt-8 w-full p-4'
+     initial={{opacity:0, x:"-100%"}}
+     animate={{opacity:1, x:0}}
+     transition={{duration:2, delay:0.5, stiffness:160, type:"spring"}}
+     >
       <div className='h-full w-full rounded-full border-2 border-gray-200  flex justify-evenly'>
         <input  type="checkbox" value={Status} onChange={updateStatus}  />
         <input  type='text' value={Task} onChange={updateTask} className=' border-2 border-gray-200 w-[60%] h-[70%] my-auto' />
-        <button type='submit' className='bg-red-600 my-2 w-[15%] text-white text-xl'>Add Task</button>
+        <button type='submit' className='bg-red-600 font-semibold my-2 w-[15%] text-white text-[2.4vw]'>Add Task</button>
       </div>
-    </form>
+    </motion.form>
     
-    {data.map((dataelement,index) => (<TodoItem Index={index} Todo={dataelement[1]} Status={dataelement[2]} />))}
+    {
+    data.map((dataelement,index) => 
+    (  <motion.div 
+    className='flex'
+    initial={{opacity:0, x:"-100%"}}
+    animate={{opacity:1, x:0}}
+    transition={{duration:0.5, delay:0.5, stiffness:80, mass:1, type:"spring"}}
+    > 
+      <TodoItem Index={index} Todo={dataelement[1]} Status={dataelement[2]} /> 
+      <button className='text-5xl ml-4' onClick={()=>{Delete(index)}}>🚮</button> 
+      </motion.div>))
+    }
     </>
   )
 }
