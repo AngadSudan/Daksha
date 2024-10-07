@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { Route, RouterProvider, createRoutesFromElements, createBrowserRouter, Routes, useLocation } from 'react-router-dom';
-import { Landing, Test, Notes, Home,Doubts } from './Pages/index.js';
+import { Landing, Test, Notes, Home,Doubts, Subject } from './Pages/index.js';
 import Todo from './Pages/Todo.jsx';
 
 const router = createBrowserRouter([
@@ -13,7 +13,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Landing /> },
       { path: "Home", element: <Home /> },
-      { path: "Notes", element: <Notes /> },
+      { path: "Notes", element: <Notes />,},
+      {path:"CASA",element:<Subject />},
+      {path:"MCP",element:<Subject />},
+      {path:"FEE",element:<Subject />},
+      {path:"PYTHON",element:<Subject />},
       { path: "Doubts", element: <Doubts /> },
       { path: "Tests", element: <Test /> },
     ],
