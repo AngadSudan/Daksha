@@ -7,8 +7,8 @@ function Test() {
     <>
       <div className='pt-[7rem] h-[90svh]  px-8 w-full flex'>
         <motion.div
-        className='h-full w-full'
-        initial={{rotate:-360,scale:0, opacity:0}}
+        className='h-full flex w-full'
+        initial={{rotate:-720,scale:0, opacity:0}}
         animate={{rotate:0, opacity:1, scale:1}}
         transition={{duration:2, delay:0.4}}
         >
