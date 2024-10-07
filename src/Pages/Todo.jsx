@@ -6,6 +6,7 @@ function Todo() {
   const [Status, setStatus ]= useState(false);
   const [Task,setTask]= useState("");
   const [data,setData]=useState([]);
+  const [visibility, setVisibility]= useState(100);
   // Created onchange function which changes values as per need.
 
   const updateTask=(e)=>{
@@ -25,6 +26,15 @@ function Todo() {
   const [counter, setCounter]= useState(0);
 
   //Form submission function
+  const Change=(e)=>{
+    console.log("button was clicked");
+    
+    if(visibility===0){
+      setVisibility(100);
+    }else{
+      setVisibility(0);
+    }
+  }
   const submission=(e)=>{
     e.preventDefault();
     setCounter(counter+1);
@@ -60,15 +70,18 @@ function Todo() {
     {
     data.map((dataelement,index) => 
     (  <motion.div 
-    className='flex'
+    className='flex justify-around'
     initial={{opacity:0, x:"-100%"}}
     animate={{opacity:1, x:0}}
     transition={{duration:0.5, delay:0.5, stiffness:80, mass:1, type:"spring"}}
     > 
-      <TodoItem Index={index} Todo={dataelement[1]} Status={dataelement[2]} /> 
+      <TodoItem onClick={()=>{alert("done"); Change()}} Index={index} Todo={dataelement[1]}  Status={dataelement[2]} /> 
       <button className='text-5xl ml-4' onClick={()=>{Delete(index)}}>🚮</button> 
       </motion.div>))
     }
+      {/* <div className={`w-[30%] h-[90svh] mt-32 translate-x-[${visibility}%] absolute top-0 right-0 bg-green-400`}>
+        This is an indeph To-do
+      </div> */}
     </>
   )
 }
