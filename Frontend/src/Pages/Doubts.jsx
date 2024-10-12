@@ -35,6 +35,8 @@ function Doubts() {
       (error)=>{console.log(error)}
     );
   };
+
+  
   return (
     <div className='[mt-8rem] h-[95svh] w-full flex flex-col-reverse lg:flex-row-reverse'>
   <motion.div 
@@ -65,7 +67,7 @@ function Doubts() {
           Python
         </label>
         <label>
-          <input type="radio" className='mb-4' name="subject" id="Front-end" value="deepikasudan977@gmail.com" onChange={ToEmail} />
+          <input type="radio" className='mb-4' name="subject" id="Front-end" value="akshat946638@gmail.com" onChange={ToEmail} />
           Front-end
         </label>
         <label>

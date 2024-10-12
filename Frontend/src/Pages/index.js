@@ -4,4 +4,7 @@ import Landing from "./Landing"
 import Test from "./Test"
 import Doubts from "./Doubts"
 import Subject from "./Subject"
-export {Home,Notes,Landing,Test, Doubts, Subject}
+import Post from "./Post"
+import Todo from "./Todo"
+import Login from "./Login"
+export {Home,Notes,Landing,Test, Doubts, Subject,Todo,Login, Post}
