@@ -11,8 +11,8 @@ function Login() {
     const updatepassword=(e)=>{
         setPassword(e.target.value);
     }
-    const updateadmin=(e)=>{
-        setAdmin(e.target.value);
+    const updateadmin=()=>{
+        setAdmin(!admin);
     }
     const updateemail=(e)=>{
         setEmail(e.target.value);
@@ -29,7 +29,7 @@ function Login() {
             password:password,
             year:year,
             admin
-        }
+        }        
         axios.post('http://localhost:8000/Login', value)
         .then((response) => {  
             console.log(response.data);  
@@ -42,8 +42,6 @@ function Login() {
             window.location.href="/Login";
         });
     }
-
-    //username,rollnumber,email,year,password,admin
   return (
 
     <div className=' h-[100svh] overflow-hidden  p-[4rem] flex justify-around bg-login bg-cover'>
