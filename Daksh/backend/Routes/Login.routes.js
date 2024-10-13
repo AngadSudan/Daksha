@@ -1,4 +1,5 @@
-const express= require("express")
+const express= require("express");
+const { HandleUserLogin } = require("../Controllers/HandleUserLogin.controller");
 
 const Login= express.Router();
 
@@ -6,8 +7,6 @@ Login.get('/',(req,res)=>{
     res.status(200).send("Login page loaded")
 })
 
-Login.post("/",(req,res)=>{
-    res.send("Post Request successful")
-})
+Login.post("/",HandleUserLogin);
 
 module.exports={Login}

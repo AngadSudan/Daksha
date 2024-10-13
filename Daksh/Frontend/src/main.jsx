@@ -15,7 +15,6 @@ const router = createBrowserRouter([
       { index: true, element: <Landing /> },
       { path: "Home", element: <Home /> },
       { path: "Notes", element: <Notes />,},
-      { path: "Login", element: <Login />,},
       // { path: "SignUp", element: <Notes />,},
       {path:"Subject/:id",element:<Subject />},
       {path:"Subject/upload",element:<Post />},
@@ -26,7 +25,10 @@ const router = createBrowserRouter([
   {
     path: "Todo",
     element: <Todo />,
-  },
+  },{
+    path: "Login", 
+    element: <Login />,
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

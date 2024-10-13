@@ -9,7 +9,7 @@ Doubts.get("/",(req,res)=>{
 })
 Doubts.post("/",async (req,res)=>{
     sgMail.setApiKey(process.env.VITE_SENDGRID_API);
-    const { to, from, subject, text } = req.body;
+    const { to, subject, text } = req.body;
     const msg = {
         to,
         from:process.env.VITE_EMAIL,

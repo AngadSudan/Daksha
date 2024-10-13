@@ -1,10 +1,6 @@
-// const mongoose= require("mongoose");
-
+const mongoose= require("mongoose");
 const UserSchema= new mongoose.Schema({
-    username:{
-        type:String,
-        required:true,
-    },rollnumber:{
+    rollnumber:{
         type:Number,
         required:true,
         unique:true
@@ -24,3 +20,6 @@ const UserSchema= new mongoose.Schema({
     }
 })
 
+const User=mongoose.model('user',UserSchema);
+
+module.exports={User};
