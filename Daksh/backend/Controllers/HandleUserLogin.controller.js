@@ -7,7 +7,11 @@ async function HandleUserLogin(req,res){
         const LoggedinUser=await User.findOne({email,password,admin,year});
         const sessionId=uuidv4();
         setUser(sessionId,LoggedinUser);
-        res.cookie('uid',sessionId);
+        res.cookie('uid',sessionId,{
+            httpOnly:true,
+            secure: true,
+            sameSite: 'none'
+        });
         res.status(200).send(`Welcome back ${LoggedinUser.email}`);
     } catch (error) {
         res.status(404).send('User not found');

@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import UserContext from "./User.context";
-
+import Cookies from 'js-cookie';
 const UserProvider = ({ children }) => {
-    const[user,SetUser]= React.useState(false);
+    const[login,SetLogin]= React.useState(true);
+    const[Admin,SetAdmin]=React.useState(false);
+    const user= Cookies.get("uid");
+    useEffect(()=>{
+        // const user= Cookies.get("uid");
+        if(user){
+            SetLogin(!login);
+        }
+        console.log(user);
+        
+    },[])
     return (
-        <UserContext.Provider value={{user,SetUser}} >
+        <UserContext.Provider value={{login,SetLogin,Admin,SetAdmin}} >
             {children}
         </UserContext.Provider>
     )

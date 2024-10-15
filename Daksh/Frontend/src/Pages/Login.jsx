@@ -30,7 +30,9 @@ function Login() {
             year:year,
             admin
         }        
-        axios.post('http://localhost:8000/Login', value)
+        axios.post('http://localhost:8000/Login', value,{
+            withCredentials: true  
+        })
         .then((response) => {  
             console.log(response.data);  
             alert("Logged In");
