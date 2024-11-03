@@ -1,27 +1,99 @@
-import React from 'react'
+import React,{useState} from 'react'
 import TestCard from '../Components/TestCard/TestCard'
 import src from "../Images/Chitkara.svg"
 import {motion} from "framer-motion"
+import axios from 'axios';
+import { div } from 'framer-motion/client';
 function Test() {
+  const [file, setFile] = useState(null);
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [improvement,setImprovement]=useState([]);
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+    setError(null);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!file) {
+      setError('Please select a file');
+      return;
+    }
+
+    setLoading(true);
+    const formData = {
+      'resume': file
+    }
+
+    
+    try {
+      const response = await axios.post('http://localhost:8000/Tracker', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+      },
+      });    
+      setResult(response.data.score);
+      setImprovement(response.data.improvements);
+    } catch (err) {
+      setError('Error scanning resume. Please try again.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <>
-      <div className='pt-[7rem] h-[90svh]  px-8 w-full flex'>
-        <motion.div
-        className='h-full flex w-full'
-        initial={{rotate:-720,scale:0, opacity:0}}
-        animate={{rotate:0, opacity:1, scale:1}}
-        transition={{duration:2, delay:0.4}}
-        >
-          <h1 className='text-[32px] mt-8  text-red-600 font-semibold'><u> TEST SCORES </u></h1>
-          <div className='lg:flex'>
-            <TestCard src={src} paragraph="This is a test scores that i dont know how should i work along with and add" Title="Chitkara Scores" />
-            <TestCard src={src} paragraph="This is a test scores that i dont know how should i work along with and add" Title="Chitkara Scores" />
-            <TestCard src={src} paragraph="This is a test scores that i dont know how should i work along with and add" Title="Chitkara Scores" />
+    <div className='h-[100svh] w-full grid place-items-center'>
+      <div className="max-w-2xl pt-[7rem] mx-auto p-4">
+        <h1 className="text-2xl font-bold mb-4">Resume ATS Scanner</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block mb-2">Upload Resume (PDF)</label>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              className="w-full p-2 border rounded"
+            />
           </div>
-        </motion.div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
+          >
+            {loading ? 'Scanning...' : 'Scan Resume'}
+          </button>
+        </form>
+
+        {error && (
+          <div className="mt-4 p-3 bg-red-100 text-red-700 rounded">
+            {error}
+          </div>
+        )}
+
+        {result && (
+          <div className="mt-4 p-4 bg-green-50 rounded">
+            <h2 className="text-xl font-semibold mb-2">Analysis Result</h2>
+            <div className="whitespace-pre-wrap">{result}</div>
+          </div>
+        )}
+        { improvement && (
+          <div className="mt-4 p-4 bg-yellow-50 rounded">
+            <h2 className="text-xl font-semibold mb-2">Improvement Suggestions</h2>
+            <ul className="list-disc pl-5">
+              {improvement.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )
+          
+        }
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default Test
+export default Test;

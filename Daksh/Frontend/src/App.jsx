@@ -5,11 +5,10 @@ import src from './Images/Notes.png'
 import { NavLink } from 'react-router-dom'
 import { Outlet} from 'react-router-dom';
 import {motion } from "framer-motion"
+
 function App() {
-  
-  
   return (
-    <UserProvider>
+    <UserProvider >
      <Header />
       <motion.div>
         <Outlet />

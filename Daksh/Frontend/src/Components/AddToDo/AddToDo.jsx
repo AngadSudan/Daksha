@@ -3,36 +3,38 @@ import {motion} from "framer-motion";
 
 function AddToDo() {
     const [Task,setTask]= useState("");
-  const [data,setData]=useState([]);
-  const updateTask=(e)=>{
-    setTask(e.target.value)
-  }
-
-  const Delete=(index)=>{
-    localStorage.removeItem(index+1);
-    setCounter(counter-1);
-}
-
-  const subtodo=()=>{
-    alert('This is a subtodo');
-  }
-  const [counter, setCounter]= useState(0);
-  const submission=(e)=>{
-    e.preventDefault();
-    setCounter(counter+1);
-    const B=[localStorage.length,Task,false];
-    localStorage.setItem(localStorage.length +1,B);
-    setTask("");
-  }
-  useEffect(()=>{
-    const dat=[]
-    for(let i=1;i<=localStorage.length;i++){
-      dat.push(localStorage.getItem(i).split(","))
+    const [data,setData]=useState([]);
+    const updateTask=(e)=>{
+      setTask(e.target.value)
     }
-    console.log(dat);
-    setData(dat);
-    
-  },[counter])
+
+    const Delete=(index)=>{
+      localStorage.removeItem(index+1);
+      setCounter(counter-1);
+    }
+
+    const subtodo=()=>{
+      alert('This is a subtodo');
+    }
+    const [counter, setCounter]= useState(0);
+    const submission=(e)=>{
+      e.preventDefault();
+      setCounter(counter+1);
+      const B=[localStorage.length,Task,false];
+      localStorage.setItem(localStorage.length +1,B);
+      setTask("");
+    }
+    useEffect(()=>{
+
+      //get data from database
+      const dat=[]
+      for(let i=1;i<=localStorage.length;i++){
+        dat.push(localStorage.getItem(i).split(","))
+      }
+      console.log(dat);
+      setData(dat);
+      
+    },[counter])
   return (
     <motion.form
      onSubmit={submission} 

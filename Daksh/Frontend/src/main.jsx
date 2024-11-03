@@ -17,9 +17,9 @@ const router = createBrowserRouter([
       { path: "Notes", element: <Notes />,},
       // { path: "SignUp", element: <Notes />,},
       {path:"Subject/:id",element:<Subject />},
-      {path:"Subject/upload",element:<Post />},
+      {path:"Subject/:id/upload",element:<Post />},
       { path: "Doubts", element: <Doubts /> },
-      { path: "Tests", element: <Test /> },
+      { path: "Tracker", element: <Test /> },
     ],
   },
   {
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-      <RouterProvider router={router} />
-  </StrictMode>
+    <StrictMode>
+        <RouterProvider router={router} />
+    </StrictMode>
 );

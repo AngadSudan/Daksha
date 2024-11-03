@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import TodoItem from '../Components/TodoItem/TodoItem';
 import { motion } from 'framer-motion';
+import { Editor } from '@tinymce/tinymce-react';
 function Todo() {
   const [Task,setTask]= useState("");
   const [data,setData]=useState([]);
-  const [Subtodo,setSubtodo]=useState([]);
-
+  const [Subtodo,setSubtodo]=useState("");
+  const [visibility,setVisibility]=useState("hidden");
   const updateTask=(e)=>{
     setTask(e.target.value)
   }
-
   const Delete=(index)=>{
     localStorage.removeItem(index+1);
     setCounter(counter-1);
 }
 
   const subtodo=()=>{
-    const value=prompt("Enter the nested todo");
-    const data=[value]
-    setSubtodo(data);
+    //when i click on button it does a fetch from the api and displays the content of the todowhich was clicked
+    if(visibility==="hidden"){
+      setVisibility("block");
+    }else{
+      setVisibility("hidden");
+    }
   }
   const [counter, setCounter]= useState(0);
   const submission=(e)=>{
@@ -30,17 +33,25 @@ function Todo() {
   }
   useEffect(()=>{
     const dat=[]
-    for(let i=1;i<=localStorage.length;i++){
-      dat.push(localStorage.getItem(i).split(","))
-    }
+    Object.keys(localStorage).forEach((key) => {
+      dat.push(localStorage.getItem(key).split(","));
+    });
     setData(dat);
     
-  },[counter])
+  },[counter]);
+
+  const editorRef = useRef(null);
+    const log = () => {
+    if (editorRef.current) {
+        console.log(editorRef.current.getContent());
+    }
+  };
   return (
     <div className='overflow-x-hidden'>
       <h1 className='text-center text-5xl font-semibold mt-8 '>Here's The Task</h1>
-      <div className='h-[500px] w-[100px] -z-40 absolute top-0 left-[10px] rounded-b-full  bg-orange-500'></div>
-      <div className='h-[500px] w-[100px] -z-40 fixed bottom-0 right-[30px] rounded-t-full  bg-red-600'></div>
+      <div className='h-[500px] w-[100px] -z-40 absolute top-0 left-[10px] rounded-b-full  bg-red-600' />
+      <div className='h-[500px] w-[100px] -z-40 fixed bottom-0 right-[30px] rounded-t-full  bg-orange-500' />
+
       <motion.form
       onSubmit={submission} 
       className='h-[6rem] mt-8 w-full p-4'
@@ -49,8 +60,15 @@ function Todo() {
       transition={{duration:2, delay:0.5, stiffness:160, type:"spring"}}
       >
         <div className='h-full ml-52  w-full rounded-full  flex gap-[30px]'>
-          <input  type='text' value={Task} onChange={updateTask} className=' border-2 border-gray-800 bg-red-200 w-[60%] h-[70%] my-auto' />
-          <button type='submit' className='bg-red-600 font-semibold rounded-full my-2 w-[10%] text-white text-[2.4vw]'>Add</button>
+          <input  type='text'
+          value={Task} 
+          onChange={updateTask} 
+          className=' border-2 border-gray-800 bg-red-200 w-[60%] h-[70%] my-auto' />
+          <button 
+          type='submit' 
+          className='bg-red-600 font-semibold rounded-full my-2 w-[10%] text-white text-[2.4vw]'>
+            Add
+          </button>
         </div>
       </motion.form>
     
@@ -62,11 +80,26 @@ function Todo() {
         animate={{opacity:1, x:0}}
         transition={{duration:0.5, delay:0.5, stiffness:80, mass:1, type:"spring"}}
         > 
-          <TodoItem Index={index} Todo={dataelement[1]} Subtodo={Subtodo}  Status={dataelement[2]} /> 
+          <TodoItem 
+          Index={index} 
+          Todo={dataelement[1]} 
+          Subtodo={Subtodo}  
+          Status={dataelement[2]} /> 
           <button onClick={subtodo} className='text-5xl my-auto' >➕</button>
+          <div>
+          </div>
           <button className='text-5xl ml-4 my-auto' onClick={()=>{Delete(index)}}>🗑️</button> 
           </motion.div>))
       }
+      <div className={`flex flex-col w-[20%] fixed top-[4rem] right-[1rem] ${visibility}`}>
+              <textarea 
+              onChange={(e)=>{setSubtodo(e.target.value)}} 
+              className='w-[100%] h-[50svh] border-2 border-gray-800 ' 
+              value={Subtodo} />
+              <button 
+              onClick={()=>{alert('saved')}}
+              className='bg-red-600 font-semibold rounded-full mx-auto w-[40%] h-8 text-white'>Save</button>
+            </div>
     </div>
   )
 }

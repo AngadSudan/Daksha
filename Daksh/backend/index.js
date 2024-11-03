@@ -9,7 +9,7 @@ const {Route}= require('./Routes/Route.routes');
 const {Home}=require("./Routes/Home.routes")
 const {Notes}=require("./Routes/Notes.routes")
 const {Doubts}=require("./Routes/Doubts.routes");
-const { Tests } = require('./Routes/Tests.routes');
+const { Tracker } = require('./Routes/Tracker.routes');
 const { Todo } = require('./Routes/Todo.routes');
 const {Login}= require("./Routes/Login.routes");
 const {SignUp}=require("./Routes/SignUp.routes");
@@ -18,6 +18,8 @@ const { connectDB } = require('./utils/Database.utils');
 dotenv.config({
     path:"./.env"
 })
+
+
 
 app.use(cors({
     origin:process.env.CORS_ORIGIN, 
@@ -33,12 +35,15 @@ app.use("/",Route)
 app.use("/Home",Home)
 app.use("/Notes",Notes)
 app.use("/Doubts",Doubts)
-app.use("/Tests",Tests)
+app.use("/Tracker",Tracker)
 app.use("/Todo",Todo)
 app.use("/SignUp",SignUp)
 app.use("/Login",Login)
 
-
+app.get('/logout',(req,res)=>{
+    res.clearCookie('uid');
+    res.status(200).send('User logged out successfully');
+});
 connectDB();
 
 app.listen(process.env.PORT || 8000,()=>{

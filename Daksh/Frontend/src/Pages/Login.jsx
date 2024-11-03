@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import src from '../Images/Login_Icon.png'
 import {motion} from "framer-motion";
 import axios from 'axios';
@@ -34,14 +34,12 @@ function Login() {
             withCredentials: true  
         })
         .then((response) => {  
-            console.log(response.data);  
-            alert("Logged In");
             window.location.href = "/";  
         })
         .catch((error) => {
             console.error(error);   
             alert("Didn't LogIn");
-            window.location.href="/Login";
+            // window.location.href="/Login";
         });
     }
   return (
