@@ -17,7 +17,7 @@ function Header() {
                 </>:<>
                   <li ><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="Login"><Button name="Login" /></NavLink></li>
                   <li><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="SignUp"><Button name="Signup" /></NavLink></li>
-                  </>
+                </>
             }
         </ul>
     </nav>

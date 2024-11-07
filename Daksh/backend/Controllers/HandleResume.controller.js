@@ -1,15 +1,13 @@
 const dotenv = require('dotenv');
 dotenv.config();
 // const {Configuration, openAIApi}= require('openai')
-
 // const config= new Configuration({
 //     apiKey: process.env.VITE_OPENAI_API_KEY,
 // })
 // const openai= new openAIApi(config);
 const OpenAi= require('openai');
 const ResumeScore= async (req, res) => {
-    // const { resumeText, jobDescription } = req.body;
-    
+    // const { resumeText, jobDescription } = req.body
     // try {
     //   const response = await openaiApi.createChatCompletion({
     //     model: "gpt-4", 
@@ -43,7 +41,7 @@ const ResumeScore= async (req, res) => {
         res.status(200).send(completion);
     } catch (error) {
         console.log(error);
-        
+        setTimeout(()=>{},2000)
         res.status(500).send('error in the model token usage');
     }
 }

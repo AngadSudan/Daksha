@@ -28,18 +28,6 @@ Tracker.post('/',upload.single("resume"),async (req, res) => {
       console.log(resumeText);
       
       console.log("claude working fine till now");
-      const resumeTips = [
-        "Customize your resume for each job application.",
-        "Use strong action verbs like 'led' and 'achieved.'",
-        "Quantify achievements (e.g., 'Increased sales by 20%').",
-        "Highlight results, not just job duties.",
-        "Limit your resume to one page, if possible.",
-        "Showcase relevant technical and soft skills.",
-        "Use a clean, professional design and format.",
-        "Include keywords to pass ATS screening.",
-        "Proofread carefully for errors.",
-        "Update regularly to include recent accomplishments."
-      ];
       const message = await anthropic.messages.create({
         model: "claude-3-5-sonnet-20241022",
         max_tokens: 100,
@@ -79,8 +67,10 @@ Tracker.post('/',upload.single("resume"),async (req, res) => {
             tipIndices.push(idx);
         }
     }
-    
-        res.json({ score: Math.round(Math.random()*(40)+60), improvements:selectedTips });
+    setTimeout(() => {
+      
+      res.json({ score: Math.round(Math.random()*(40)+60), improvements:selectedTips });
+    },3000)
     //   res.json({ score: Math.round(Math.random()*(40)+60), improvements:['Add few more Projects', 'Gain more Experience','add few more skills to your resume'] });
     }
   });

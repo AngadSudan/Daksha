@@ -7,12 +7,10 @@ function AddToDo() {
     const updateTask=(e)=>{
       setTask(e.target.value)
     }
-
     const Delete=(index)=>{
       localStorage.removeItem(index+1);
       setCounter(counter-1);
     }
-
     const subtodo=()=>{
       alert('This is a subtodo');
     }
@@ -20,12 +18,17 @@ function AddToDo() {
     const submission=(e)=>{
       e.preventDefault();
       setCounter(counter+1);
-      const B=[localStorage.length,Task,false];
-      localStorage.setItem(localStorage.length +1,B);
-      setTask("");
+      console.log('Task is '+Task);
+      if(Task===""){
+        alert("can't enter an empty task");
+        return ;
+      }else{
+        const B=[localStorage.length,Task,false];
+        localStorage.setItem(localStorage.length +1,B);
+        setTask("");
+      }
     }
     useEffect(()=>{
-
       //get data from database
       const dat=[]
       for(let i=1;i<=localStorage.length;i++){

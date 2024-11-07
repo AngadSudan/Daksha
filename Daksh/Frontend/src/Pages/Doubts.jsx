@@ -7,7 +7,7 @@ function Doubts() {
   const [fromemail,setFromEmail]= useState('');
   const [toemail, setToEmail]= useState('');
   const [message,setMessage]= useState('');
-
+  const [loading , setloading]= useState(false);
 
   const Name=(e)=>{
     setName(e.target.value);
@@ -24,16 +24,19 @@ function Doubts() {
   
   const submitted=(e)=>{
     e.preventDefault();
+    setloading(true);
     const templateParams = {
       to: toemail,
       from: configure.Email,
       subject: "New Doubt Arrived",
       text: message,
     };
+    setloading(true);
     axios.post('http://localhost:8000/Doubts', templateParams).then(()=>{alert("The mail data was sent successfully")
-    }).catch(
-      (error)=>{console.log(error)}
-    );
+    setloading(false);
+    }).then(()=>{setloading(false);}).catch(() => {
+      setloading(false);
+      alert('an error occurred')});
   };
 
   
@@ -88,6 +91,9 @@ function Doubts() {
   >
     <img className='mx-auto' src="https://media.istockphoto.com/id/1596438370/vector/man-with-question-mark.jpg?s=612x612&w=0&k=20&c=5DKnRkyVsqE2E_QA_6nB2X4GZgXkBM6vOFsJL_g6Lhk=" alt="Question Image" />
   </motion.div>
+  {loading && <div className='text-bold text-3xl z-10 bg-white border-gray-200 border-2 p-4 absolute top-[9rem] right-[0]'>
+    Uploading ...
+  </div>}
 </div>
 
   )

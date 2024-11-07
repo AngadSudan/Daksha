@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import TodoItem from '../Components/TodoItem/TodoItem';
 import { motion } from 'framer-motion';
-import { Editor } from '@tinymce/tinymce-react';
 function Todo() {
   const [Task,setTask]= useState("");
   const [data,setData]=useState([]);
@@ -73,8 +72,10 @@ function Todo() {
       </motion.form>
     
       {
-        data.map((dataelement,index) => 
-        (  <motion.div 
+        data.map((dataelement,index) => {
+          if(dataelement[1]!==''){
+            return(
+              <motion.div 
         className='flex gap-[35px] ml-80 mb-4'
         initial={{opacity:0, x:"-100%"}}
         animate={{opacity:1, x:0}}
@@ -86,10 +87,11 @@ function Todo() {
           Subtodo={Subtodo}  
           Status={dataelement[2]} /> 
           <button onClick={subtodo} className='text-5xl my-auto' >➕</button>
-          <div>
-          </div>
+          <div></div>
           <button className='text-5xl ml-4 my-auto' onClick={()=>{Delete(index)}}>🗑️</button> 
-          </motion.div>))
+          </motion.div>)
+          } 
+          })
       }
       <div className={`flex flex-col w-[20%] fixed top-[4rem] right-[1rem] ${visibility}`}>
               <textarea 
