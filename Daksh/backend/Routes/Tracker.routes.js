@@ -45,15 +45,11 @@ Tracker.post('/',upload.single("resume"),async (req, res) => {
       });
   
     } catch (error) {
-    //   console.error('Error:', error);
       const resumeTips = [
-        "Customize your resume for each job application.",
         "Use strong action verbs like 'led' and 'achieved.'",
         "Quantify achievements (e.g., 'Increased sales by 20%').",
         "Highlight results, not just job duties.",
-        "Limit your resume to one page, if possible.",
         "Showcase relevant technical and soft skills.",
-        "Use a clean, professional design and format.",
         "Include keywords to pass ATS screening.",
         "Proofread carefully for errors.",
         "Update regularly to include recent accomplishments."

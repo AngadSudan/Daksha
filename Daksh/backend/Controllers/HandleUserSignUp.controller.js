@@ -3,13 +3,17 @@ const {v4: uuidv4}= require('uuid')
 async function HandleUserSignUp(req,res){
     const {rollnumber,email,year,password,admin}=req.body;
     try {
-        await User.create({
+        const user= await User.create({
             rollnumber,
             email,
             year,
             password,
             admin
         })
+        res.cookie('user', user, {
+            httpOnly: true,
+            secure: true
+        });
         console.log("Successful Signup");
         res.status(200).send("Welcome Aboard Sir");
         

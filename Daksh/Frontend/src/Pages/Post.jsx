@@ -7,12 +7,13 @@ function Post() {
   const [notesFile, setNotesFile] = useState(null); 
   const [chapter, setChapter] = useState('');
   const [loading,setloading]=useState(false);
-
+  const [title,setTitle]=useState('');
   const proceed = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('Notes', notesFile); 
     formData.append('Chapter', chapter); 
+    formData.append('title',title);
     try {
       setloading(true);
       const response = await axios.post(`http://localhost:8000/Notes/Subject/${id}`, formData, {
@@ -38,6 +39,15 @@ function Post() {
             type="file" 
             name="Notes" 
             onChange={(e) => setNotesFile(e.target.files[0])}
+            required 
+          />
+          <input 
+            className='h-[2rem] w-[40%] p-4 border-2 mx-auto border-gray-300 mt-8' 
+            type="text" 
+            name="title"
+            value={title}
+            placeholder='Write Title' 
+            onChange={(e) => setTitle(e.target.value)}
             required 
           />
           <input 

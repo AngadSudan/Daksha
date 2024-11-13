@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {motion} from 'framer-motion'
-function TodoItem({Index,Subtodo,Status, Todo}, visibility) {
+function TodoItem({Index,Status, Todo}, visibility) {
 
     const [status,setStatus]= useState(!Status);
     const [edit, setEdit]= useState(false);

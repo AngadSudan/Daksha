@@ -5,7 +5,7 @@ const UserProvider = ({ children }) => {
     const[login,setLogin]= React.useState(true);   
     const[Admin,SetAdmin]=React.useState(true);
     // useEffect(()=>{
-        // const user= Cookies.get("uid");
+    //     // const user= Cookies.get("uid");
     //     const user= axios.get('http://localhost:8000').then((res)=>{return res})
     //     if(user){
     //         setLogin(user.data);

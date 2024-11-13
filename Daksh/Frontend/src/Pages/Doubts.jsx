@@ -70,7 +70,7 @@ function Doubts() {
           Python
         </label>
         <label>
-          <input type="radio" className='mb-4' name="subject" id="Front-end" value="akshat946638@gmail.com" onChange={ToEmail} />
+          <input type="radio" className='mb-4' name="subject" id="Front-end" value="adityadgr29@gmail.com" onChange={ToEmail} />
           Front-end
         </label>
         <label>

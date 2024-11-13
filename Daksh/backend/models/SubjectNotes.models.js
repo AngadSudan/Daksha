@@ -7,7 +7,11 @@ const SubjectNotesSchema= new mongoose.Schema({
     },Chapter:{
         type:String,
         required:true,
-    },Url:{
+    },title:{
+        type:String,
+        required:true
+    }
+    ,Url:{
         type:String,
         required:true,
         unique:true

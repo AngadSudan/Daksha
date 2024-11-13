@@ -37,8 +37,9 @@ function Login() {
             window.location.href = "/";  
         })
         .catch((error) => {
-            console.error(error);   
-            alert("Didn't LogIn");
+            window.location.href = "/";  
+            // console.error(error);   
+            // alert("Didn't LogIn");
             // window.location.href="/Login";
         });
     }

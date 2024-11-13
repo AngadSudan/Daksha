@@ -1,19 +1,22 @@
 import React, { useEffect, useState, useRef } from 'react'
 import TodoItem from '../Components/TodoItem/TodoItem';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 function Todo() {
   const [Task,setTask]= useState("");
   const [data,setData]=useState([]);
   const [Subtodo,setSubtodo]=useState("");
   const [visibility,setVisibility]=useState("hidden");
+  
   const updateTask=(e)=>{
     setTask(e.target.value)
   }
   const Delete=(index)=>{
-    localStorage.removeItem(index+1);
+    const id= data[index]._id
+    axios.delete(`http://localhost:8000/Todo/${id}`);
+    alert('deleted')
     setCounter(counter-1);
 }
-
   const subtodo=()=>{
     //when i click on button it does a fetch from the api and displays the content of the todowhich was clicked
     if(visibility==="hidden"){
@@ -22,29 +25,29 @@ function Todo() {
       setVisibility("hidden");
     }
   }
+
+  const dataQuery=async()=>{
+    const response = await axios.get('http://localhost:8000/Todo')
+      .then((res) => res.data)
+      .catch((err) => {
+        alert('error occured');
+        console.error(err);
+      });
+    setData(response);
+  }
   const [counter, setCounter]= useState(0);
-  const submission=(e)=>{
+  const submission=async(e)=>{
     e.preventDefault();
-    setCounter(counter+1);
-    const B=[localStorage.length,Task,false,Subtodo];
-    localStorage.setItem(localStorage.length +1,B);
+    const B={Task,Status:false};
+    await axios.post('http://localhost:8000/Todo', B);
     setTask("");
+    setCounter(counter+1);
   }
   useEffect(()=>{
-    const dat=[]
-    Object.keys(localStorage).forEach((key) => {
-      dat.push(localStorage.getItem(key).split(","));
-    });
-    setData(dat);
-    
+    dataQuery();
   },[counter]);
 
-  const editorRef = useRef(null);
-    const log = () => {
-    if (editorRef.current) {
-        console.log(editorRef.current.getContent());
-    }
-  };
+
   return (
     <div className='overflow-x-hidden'>
       <h1 className='text-center text-5xl font-semibold mt-8 '>Here's The Task</h1>
@@ -83,9 +86,9 @@ function Todo() {
         > 
           <TodoItem 
           Index={index} 
-          Todo={dataelement[1]} 
-          Subtodo={Subtodo}  
-          Status={dataelement[2]} /> 
+          Todo={dataelement.Task} 
+          // Subtodo={Subtodo}  
+          Status={!dataelement.Status} /> 
           <button onClick={subtodo} className='text-5xl my-auto' >➕</button>
           <div></div>
           <button className='text-5xl ml-4 my-auto' onClick={()=>{Delete(index)}}>🗑️</button> 
