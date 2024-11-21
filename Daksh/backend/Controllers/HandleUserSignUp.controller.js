@@ -24,26 +24,23 @@ async function HandleUserSignUp(req,res){
     
 }
 
-
-// const {verifyJWT}= require('../utils/Auth.utils')
-// const {setUser,getUser}= require('../utils/Auth.utils')
 async function HandleUserLogin(req,res){
     const {email,password,admin,year}=req.body
     try {
-        const LoggedinUser=await User.findOne({email,password,admin,year});
+        const LoggedinUser=await User.find({email,password,admin,year}).select('_id admin');
         const sessionId=uuidv4();
-        console.log("cookie generated");
-        
-        // setUser(sessionId,LoggedinUser);
-        res.cookie('uid',sessionId,{
-            httpOnly:true,
-            secure: true,
-        });
-        res.status(200).send(`Welcome back ${LoggedinUser.email}`);
-        console.log("check3");
+        if(!LoggedinUser){
+            res.status(404).send('User not found');
+        }
+        else
+        {
+            console.log("LoggedinUser",LoggedinUser);
+            const isidpresent= LoggedinUser[0].id?true:false;
+            return res.status(200).send({admin:LoggedinUser[0].admin,user:isidpresent});
+        }
     } catch (error) {
         res.status(404).send('User not found');
-    }
+    } 
 }
 
 async function HandleUserLogout(req,res){

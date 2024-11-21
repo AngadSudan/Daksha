@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import src from '../Images/Login_Icon.png'
 import {motion} from "framer-motion";
 import axios from 'axios';
+import UserProvider from '../Context/User.provider';
+import configure from '../Conf/configure';
 function Login() {
     const [password, setPassword]= useState("");
     const [email,setEmail]=useState("");
@@ -14,6 +16,7 @@ function Login() {
     const updateadmin=()=>{
         setAdmin(!admin);
     }
+    
     const updateemail=(e)=>{
         setEmail(e.target.value);
     }
@@ -21,26 +24,24 @@ function Login() {
         setYear(e.target.value);
     }
     const submit=(e)=>{
-        e.preventDefault();
-        console.log(email, password);
-        
+        e.preventDefault(); 
         const value={
             email, 
             password:password,
             year:year,
             admin
         }        
-        axios.post('http://localhost:8000/Login', value,{
+        axios.post(`${configure.Endpoint}/Login`, value,{
             withCredentials: true  
         })
         .then((response) => {  
+            console.log(response.data); 
+            localStorage.setItem('sessionId',true);
             window.location.href = "/";  
         })
-        .catch((error) => {
-            window.location.href = "/";  
-            // console.error(error);   
-            // alert("Didn't LogIn");
-            // window.location.href="/Login";
+        .catch((error) => {  
+            console.error(error);   
+            alert("Didn't LogIn");
         });
     }
   return (

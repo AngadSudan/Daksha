@@ -2,17 +2,28 @@ import React, { useEffect } from "react";
 import axios from 'axios';
 import UserContext from "./User.context";
 const UserProvider = ({ children }) => {
-    const[login,setLogin]= React.useState(true);   
+    const[login,setLogin]= React.useState('');   
     const[Admin,SetAdmin]=React.useState(true);
-    // useEffect(()=>{
-    //     // const user= Cookies.get("uid");
-    //     const user= axios.get('http://localhost:8000').then((res)=>{return res})
-    //     if(user){
-    //         setLogin(user.data);
-    //     }
-    //     console.log("value from axios is ",user.data);
-        
-    // },[window.location.pathname])
+    const dataupdation= async()=>{
+        const user=await axios.get(`${process.env.VITE_ENDPOINT}`);
+        console.log(user);
+        if(user){
+            localStorage.setItem('sessionId',user.data);
+            localStorage.setItem('admin',user.data)
+        }else{
+            localStorage.setItem('sessionId',null);
+            localStorage.setItem('admin',null);
+        }
+    }
+    useEffect(()=>{
+        dataupdation();
+        if(localStorage.getItem('sessionId')!==null){
+            setLogin(true);
+        }
+        if(localStorage.getItem('admin')!==null){
+            setLogin(true);
+        }
+    },[window.location.pathname])
     return (
         <UserContext.Provider value={{login,setLogin,Admin,SetAdmin}} >
             {children}

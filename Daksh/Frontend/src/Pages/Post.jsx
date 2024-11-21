@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React,{useState} from 'react'
 import { useParams } from 'react-router';
+import configure from '../Conf/configure';
 
 function Post() {
   const { id } = useParams();    
@@ -16,7 +17,7 @@ function Post() {
     formData.append('title',title);
     try {
       setloading(true);
-      const response = await axios.post(`http://localhost:8000/Notes/Subject/${id}`, formData, {
+      const response = await axios.post(`${configure.Endpoint}/Notes/Subject/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data', // Set the content type for file upload
         },

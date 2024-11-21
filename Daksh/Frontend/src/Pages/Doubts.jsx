@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {motion} from 'framer-motion'
 import configure from '../Conf/configure';
 import axios from 'axios';
+// import configure from '../Conf/configure';
 function Doubts() {
   const [name,setName]= useState('');
   const [fromemail,setFromEmail]= useState('');
@@ -32,7 +33,7 @@ function Doubts() {
       text: message,
     };
     setloading(true);
-    axios.post('http://localhost:8000/Doubts', templateParams).then(()=>{alert("The mail data was sent successfully")
+    axios.post(`${configure.Endpoint}/Doubts`, templateParams).then(()=>{alert("The mail data was sent successfully")
     setloading(false);
     }).then(()=>{setloading(false);}).catch(() => {
       setloading(false);

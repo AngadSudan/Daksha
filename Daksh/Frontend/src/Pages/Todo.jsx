@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import TodoItem from '../Components/TodoItem/TodoItem';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import configure from '../Conf/configure.js';
 function Todo() {
   const [Task,setTask]= useState("");
   const [data,setData]=useState([]);
@@ -13,7 +14,7 @@ function Todo() {
   }
   const Delete=(index)=>{
     const id= data[index]._id
-    axios.delete(`http://localhost:8000/Todo/${id}`);
+    axios.delete(`${configure.Endpoint}/Todo/${id}`);
     alert('deleted')
     setCounter(counter-1);
 }
@@ -27,7 +28,7 @@ function Todo() {
   }
 
   const dataQuery=async()=>{
-    const response = await axios.get('http://localhost:8000/Todo')
+    const response = await axios.get(`${configure.Endpoint}/Todo`)
       .then((res) => res.data)
       .catch((err) => {
         alert('error occured');
@@ -39,7 +40,7 @@ function Todo() {
   const submission=async(e)=>{
     e.preventDefault();
     const B={Task,Status:false};
-    await axios.post('http://localhost:8000/Todo', B);
+    await axios.post(`${configure.Endpoint}/Todo`, B);
     setTask("");
     setCounter(counter+1);
   }

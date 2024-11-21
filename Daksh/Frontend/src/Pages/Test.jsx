@@ -4,6 +4,7 @@ import src from "../Images/Chitkara.svg"
 import {motion} from "framer-motion"
 import axios from 'axios';
 import { div } from 'framer-motion/client';
+import configure from '../Conf/configure';
 function Test() {
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
@@ -22,15 +23,12 @@ function Test() {
       setError('Please select a file');
       return;
     }
-
     setLoading(true);
     const formData = {
       'resume': file
     }
-
-    
     try {
-      const response = await axios.post('http://localhost:8000/Tracker', formData, {
+      const response = await axios.post(`${configure.Endpoint}/Tracker`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
       },
