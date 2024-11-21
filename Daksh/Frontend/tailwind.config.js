@@ -13,7 +13,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'about':'url(./src/Images/Daksh_About.jpg)',
+        'about':'url(./src/Images/homepage.png)',
         'login':'url(./src/Images/Daksh_Login.jpg)',
         'login-icon':'url(./src/Images/Login_Icon.png)'
       },animation: {
