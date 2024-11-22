@@ -76,7 +76,7 @@ function Todo() {
       </motion.form>
     
       {
-        data.map((dataelement,index) => {
+        data && data.map((dataelement,index) => {
           if(dataelement[1]!==''){
             return(
               <motion.div 
