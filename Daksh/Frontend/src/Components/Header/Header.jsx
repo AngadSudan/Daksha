@@ -11,7 +11,7 @@ function Header() {
     setvalue(!value);
   }
   return (
-    <nav className='w-full h-[6rem] fixed flex justify-evenly py-[1rem] px-auto z-50'>
+    <nav className='w-full h-[6rem] fixed flex bg-[#ffe7e7] justify-evenly py-[1rem] px-auto z-50'>
         <h1 className='w-[30%] text-[32px] font-bold my-auto'> <NavLink to="/"> <h1 className='my-auto'>Daksh</h1> </NavLink> </h1>
         <ul className='hidden sm:flex gap-[3.5rem] text-2xl py-auto my-auto'>
             <li><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'}   to=''>Home</  NavLink></li>
@@ -27,7 +27,7 @@ function Header() {
         <button onClick={visible} className='lg:hidden md:hidden sm:hidden'>
           <GiHamburgerMenu className='text-3xl' />
         </button>
-        <div className={` bg-white list-none lg:hidden md:hidden bg-white sm:hidden ${value?"translate-x-0":"translate-x-[300%]"} h-[100svh] fixed top-[5rem] p-8  right-0 z-50 border-gray-300 border-2 w-[22rem] `}>
+        <div className={` list-none lg:hidden md:hidden bg-white sm:hidden ${value?"translate-x-0":"translate-x-[300%]"} h-[100svh] fixed top-[5rem] p-8  right-0 z-50 border-gray-300 border-2 w-[22rem] `}>
           {
             !login ?<>
               <div className='h-16 z-[9999] bg-white w-full hover:border-white hover:border-2  '>
