@@ -6,3 +6,103 @@
 html{
     scroll-behavior: smooth;
 } */
+
+body{
+    background-color: #ffe8c1;
+}
+
+::-webkit-scrollbar {
+    width: 0.5em;
+}
+ 
+::-webkit-scrollbar-track {
+    background: #d7b579;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #ffd7be;
+    border-radius: 10px;
+}
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+@media (hover: hover) {
+  .animate-scroll-left:hover,
+  .animate-scroll-right:hover {
+    animation-play-state: paused;
+  }
+}
+
+@media (max-width: 640px) {
+  .animate-scroll-left,
+  .animate-scroll-right {
+    animation: none;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-slower {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: spin-slower 25s linear infinite;
+}
+
+/* Counter-rotate the items to keep them upright */
+.animate-spin-slow > div {
+  animation: spin-slow 20s linear infinite reverse;
+}
+
+.animate-spin-slower > div {
+  animation: spin-slower 25s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow,
+  .animate-spin-slower,
+  .animate-spin-slow > div,
+  .animate-spin-slower > div {
+    animation: none;
+  }
+}

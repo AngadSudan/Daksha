@@ -9,6 +9,9 @@ import uov from '../Images/uov.png'
 import VIT from '../Images/VIT.png'
 import frms from '../Images/frms.png'
 import { AnimatedTooltip } from '../Components/ui/animated-tooltip';
+import Review from '../Components/review';
+import {Orbitingcircle} from '../Components/orbitingcircle';
+import ContactForm from '../Components/ContactForm';
 
 function wordWriter(word,speed=40){
   const initial=[]
@@ -54,8 +57,13 @@ function wordWriter(word,speed=40){
   return displayedLetters;
 }
 function Landing() {
-  const items= [{id:1,name:'IIT DELHI',image:IITD},{id:2,name:'BITS PILANI',image:BITSPILANI},{id:3,name:'University of Virginia',image:uov},{id:4,name:'VIT',image:VIT},{id:5,name:'FRMS',image:frms}]
   
+  const items= [{id:1,name:'IIT DELHI',image:IITD},{id:2,name:'BITS PILANI',image:BITSPILANI},{id:3,name:'University of Virginia',image:uov},{id:4,name:'VIT',image:VIT},{id:5,name:'FRMS',image:frms}]
+  const userreviews= [
+    {name:'Rahul Jha', review:'This app is literally the best thing that has happened to me in my entire life'},
+    {name:'Shivam Shukla', review:'I used to spend hours making notes, but with this app I can do it in minutes'},
+    {name:'Aryaman Jhaveri', review:'The UI is so clean and simple, I love using it'},
+  ]
   return (
     <div className='h-[100svh]'>
       {/* hero section  */}
@@ -75,12 +83,17 @@ function Landing() {
           <AnimatedTooltip  items={items} />
         </div>
       </div>
-      <div className='h-[100svh] w-screen grid place-items-center bg-[#ffe8c1]' >
-        <h1 className='text-center text-4xl font-bold '>Our Reviews</h1>
+      <div className=' overflow-hidden  h-fit w-screen grid place-items-center bg-[#ffe8c1]' >
+        <Review userreviews={userreviews} />
       </div>
-      <div className='h-[100svh] w-screen grid place-items-center bg-[#d7b579]'>
-        Contact Us
+      <div className='h-[40svh] lg:h-[80svh] hidden lg:flex  w-screen bg-[#d7b579]'>
+        <div className='h-fit p-8 w-full '>
+          <Orbitingcircle />
+        </div>
       </div>
+      {/* <div className='xl:hidden w-screen p-8 h-[20%]'> */}
+        <ContactForm />
+      {/* </div> */}
     </div>
   )
 }

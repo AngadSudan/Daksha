@@ -11,7 +11,7 @@ function Header() {
     setvalue(!value);
   }
   return (
-    <nav className='w-full h-[6rem] flex bg-[#ffe7e7] justify-evenly py-[1rem] px-auto z-50'>
+    <nav className='w-full h-[6rem] flex bg-[#ffe8c1] justify-evenly py-[1rem] px-auto z-50'>
         <h1 className='w-[30%] text-[32px] font-bold my-auto'> <NavLink to="/"> <h1 className='my-auto'>Daksh</h1> </NavLink> </h1>
         <ul className='hidden sm:flex gap-[3.5rem] text-2xl py-auto my-auto'>
             <li><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'}   to=''>Home</  NavLink></li>
@@ -19,8 +19,10 @@ function Header() {
                 <li><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'}  to="Notes">Notes</NavLink></li>
                 <li ><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="Doubts">Doubts</NavLink></li>
                 <li><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="Tracker">ATS</NavLink></li>
+                
                 </>:<>
                   <button><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="Login"><Button name="Login" /></NavLink></button>
+                  <NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="Signup"><Button name="Signup" /></NavLink>
                 </>
             }
         </ul>
@@ -35,6 +37,9 @@ function Header() {
               </div>
               <div className='h-16 z-[9999] bg-white w-full hover:border-white hover:border-2  '>
               <button><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="Login"><Button name="Login" /></NavLink></button>
+              </div>
+              <div className='h-16 z-[9999] bg-white w-full hover:border-white hover:border-2  '>
+              <button><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="Signup"><Button name="Signup" /></NavLink></button>
               </div>
               </>:
               <>

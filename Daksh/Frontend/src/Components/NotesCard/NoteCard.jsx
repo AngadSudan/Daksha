@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 function Notes({src, Heading, path,description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quod.'}) {
   return (
     <div className='w-full h-fit p-8 '>
-      <div className='flex md:hidden p-8 mt-48 mx-auto border-black border-2 rounded-xl flex-col h-[25%] w-[80%] '>
+      <div className='flex md:hidden p-4 mx-auto border-black border-2 rounded-xl flex-col h-[20%] w-[60%] '>
         <img src={src}  className="mb-16" alt="" />
         <button className=' h-fit border-black border-2 p-4 flex justify-center'>
           <NavLink to={path} className='text-center'>

@@ -7,4 +7,5 @@ import Subject from "./Subject"
 import Post from "./Post"
 import Todo from "./Todo"
 import Login from "./Login"
-export {Home,Notes,Landing,Test, Doubts, Subject,Todo,Login, Post}
+import Signup from "./Signup"
+export {Home,Notes,Landing,Test, Doubts, Subject,Todo,Login,Signup, Post}

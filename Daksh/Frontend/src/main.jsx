@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { Route, RouterProvider, createRoutesFromElements, createBrowserRouter, Routes, useLocation } from 'react-router-dom';
-import { Landing, Test, Notes, Home,Doubts, Subject, Post } from './Pages/index.js';
+import { Landing, Test, Notes, Home,Doubts, Subject, Post, Signup } from './Pages/index.js';
 import Todo from './Pages/Todo.jsx';
 import Login from './Pages/Login.jsx';
 
@@ -28,6 +28,10 @@ const router = createBrowserRouter([
   },{
     path: "Login", 
     element: <Login />,
+  }
+  ,{
+    path: "Signup", 
+    element: <Signup />,
   }
 ]);
 
