@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import axios from 'axios';
 import UserContext from "./User.context";
+import configure from "../Conf/configure";
 const UserProvider = ({ children }) => {
     const[login,setLogin]= React.useState('');   
     const[Admin,SetAdmin]=React.useState(true);
     const dataupdation= async()=>{
-        const user=await axios.get(`${process.env.VITE_ENDPOINT}`);
+        const user=await axios.get(`${configure.Endpoint}`);
         console.log(user);
         if(user){
             localStorage.setItem('sessionId',user.data);

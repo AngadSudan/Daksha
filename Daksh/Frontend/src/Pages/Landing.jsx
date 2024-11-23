@@ -58,7 +58,6 @@ function Landing() {
   
   return (
     <div className='h-[100svh]'>
-      <Header />
       {/* hero section  */}
       <div className='h-[90svh] w-full bg-[#ffe8c1] flex flex-col justify-center'  >
         <h1 className='text-center mx-auto text-6xl text-wrap md:text-7xl font-bold'>{wordWriter('DAKSH')}</h1>
@@ -72,12 +71,12 @@ function Landing() {
       {/* our partners  */}
       <div className='w-fullh-fit bg-[#d7b579] p-8 '>
         <h1 className='text-center text-4xl font-bold '>Our Partners</h1>
-        <div className='w-[90%] -z-10 h-fit p-8 mx-auto md:flex '>
+        <div className='md:w-[70%] w-[90%] -z-10 h-fit p-8 mx-auto md:flex '>
           <AnimatedTooltip  items={items} />
         </div>
       </div>
       <div className='h-[100svh] w-screen grid place-items-center bg-[#ffe8c1]' >
-        Review Section
+        <h1 className='text-center text-4xl font-bold '>Our Reviews</h1>
       </div>
       <div className='h-[100svh] w-screen grid place-items-center bg-[#d7b579]'>
         Contact Us

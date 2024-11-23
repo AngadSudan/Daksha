@@ -3,7 +3,7 @@ const {User}=require("../models/User.models");
 
 const HandleTodo= async(req,res)=>{
     const {Task,Status}= req.body; 
-    const userid='672f605223a07b4d38cd1de1';
+    const userid='6741a40c7367e2dd592afce0';
     const user= await User.findOne({_id:userid}); 
     if(!user){
         res.status(404).send('User not found ')
@@ -19,7 +19,7 @@ const HandleTodo= async(req,res)=>{
     }
 }
 const getTodo= async(req,res)=>{
-    const userid='672f605223a07b4d38cd1de1';
+    const userid='6741a40c7367e2dd592afce0';
     const user= await User.findOne({_id:userid});
     if(!user){
         res.status(404).send('User not found ')
@@ -36,7 +36,7 @@ const getTodo= async(req,res)=>{
 }
 const updateTodo= async(req,res)=>{
     const {Task}= req.body;
-    const userid='672f605223a07b4d38cd1de1';
+    const userid='6741a40c7367e2dd592afce0';
     const user= await User.findOne({_id:userid});
     if(!user){
         res.status(404).send('User not found ')

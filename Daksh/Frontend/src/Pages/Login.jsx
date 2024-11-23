@@ -45,45 +45,69 @@ function Login() {
         });
     }
   return (
+  <div className="min-h-screen p-4 flex flex-col lg:flex-row justify-center items-center bg-login bg-cover overflow-hidden">
+    <div className="w-full lg:w-[40%] max-w-lg p-8 bg-gray-100 shadow-2xl rounded-lg opacity-85">
+      <h1 className="text-4xl font-bold mb-4">Hi There!</h1>
+      <p className="text-lg mb-6">Have We Met Before? Let's see!</p>
+      <form className="flex flex-col gap-6" method="POST">
 
-    <div className=' h-[100svh] overflow-hidden  p-[4rem] flex justify-around bg-login bg-cover'>
-        <div className='h-[85svh] w-[40%] p-[4rem] opacity-85 bg-gray-100 shadow-2xl' >
-            <h1 className='text-5xl opacity-100  mb-2 font-bold'>Hi There!</h1>
-            <p className=' opacity-100 '>Have We Met Before?</p>
-            <form className='flex mt-[4vh] opacity-100  w-[80%] mx-auto flex-col  ' method="POST">
-                <label >
-                    <h1 className='mb-2'> Email:</h1>
-                    <input className='mb-8 border-2 border-gray-200 w-full h-[3rem]' name="email" value={email} onChange={updateemail} type='text' placeholder='email' />
-                </label>
-                <label >
-                    <h1 className='mb-2'> Password</h1>
-                    <input  className='mb-8 border-2 border-gray-200 w-full h-[3rem]' type="password" name="password" value={password} onChange={updatepassword} placeholder='password' />
-                </label>
-                <label >
-                    <span className='mb-2 mr-4 '> Teacher:</span>
-                    <input className='mb-8 border-2 border-gray-200'  type="checkbox" name="admin" value={admin} onChange={updateadmin}  />
-                </label>
-                <label >
-                    <h1 className='mb-2 inline-block`   ' > year:</h1>
-                    <input className='mb-8 border-2 border-gray-200 w-full h-[3rem]'  type="number" name="year" value={year} onChange={updateyear} />
-                </label>
-                
-                <button className='mb-4 w-full border-2 border-red-300 h-[3rem] rounded-lg hover:bg-red-600 hover:text-white' type='Submit' onClick={submit} >Submit</button>
-            </form>
-        </div>
-        <div className='h-[85svh] w-[50%]'>
-            <motion.img 
-            initial={{ y: 0, }} // Initial positions and rotations
-            animate={{ y: [45,-45,45]}}
-            transition={{
-              duration: 4, 
-              repeat: Infinity, 
-              ease:"easeInOut", 
-              yoyo: true, 
-            }}
-            src={src} className='h-full w-full'></motion.img>
-        </div>
+        <label className="flex flex-col">
+          <span className="text-sm font-medium mb-1">Email:</span>
+          <input
+            className="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            name="email"
+            value={email}
+            onChange={updateemail}
+            type="text"
+            placeholder="Enter your email"
+          />
+        </label>
+
+        <label className="flex flex-col">
+          <span className="text-sm font-medium mb-1">Password:</span>
+          <input
+            className="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="password"
+            name="password"
+            value={password}
+            onChange={updatepassword}
+            placeholder="Enter your password"
+          />
+        </label>
+
+        <label className="flex items-center gap-3">
+          <input
+            className="border border-gray-300 focus:ring-blue-500"
+            type="checkbox"
+            name="admin"
+            value={admin}
+            onChange={updateadmin}
+          />
+          <span>Teacher</span>
+        </label>
+
+        <label className="flex flex-col">
+          <span className="text-sm font-medium mb-1">Year:</span>
+          <input
+            className="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="number"
+            name="year"
+            value={year}
+            onChange={updateyear}
+          />
+        </label>
+
+        <button
+          className="w-full py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all"
+          type="submit"
+          onClick={submit}
+        >
+          Submit
+        </button>
+      </form>
     </div>
+  </div>
+
   )
 }
 

@@ -76,8 +76,7 @@ Tracker.post('/',upload.single("resume"),async (req, res) => {
       });
     }, 3000);
   }
-  
-  });
+});
 
 
 module.exports={
