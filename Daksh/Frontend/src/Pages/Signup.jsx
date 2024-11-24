@@ -41,7 +41,7 @@ function Signup() {
         })
         .catch((error) => {  
             console.error(error);   
-            alert("Didn't LogIn");
+            alert("Didn't SignUp");
         });
     }
   return (

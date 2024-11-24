@@ -4,16 +4,13 @@ import UserContext from "./User.context";
 import configure from "../Conf/configure";
 const UserProvider = ({ children }) => {
     const[login,setLogin]= React.useState('');   
-    const[Admin,SetAdmin]=React.useState(true);
+    const[Admin,SetAdmin]=React.useState('');
     const dataupdation= async()=>{
         const user=await axios.get(`${configure.Endpoint}`);
         console.log(user);
         if(user){
             localStorage.setItem('sessionId',user.data);
             localStorage.setItem('admin',user.data)
-        }else{
-            localStorage.setItem('sessionId',null);
-            localStorage.setItem('admin',null);
         }
     }
     useEffect(()=>{

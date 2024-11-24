@@ -6,12 +6,12 @@ import { use } from 'framer-motion/client'
 function Notes() {
   const [RandomQuote,setRandomQoute]= useState('')
   const getQuote=async()=>{
-    await fetch('https://api.quotable.io/quotes/random')
+    await fetch('https://favqs.com/api/qotd')
     .then(res => res.json())
-    .then(data => setRandomQoute(data.content))
+    .then(data => setRandomQoute(data.quote.body))
     .catch((err)=>{console.log(err); setRandomQoute('When live gives you lemon, make a lemonade')});
 
-    console.log(RandomQuote);
+    // console.log(RandomQuote);
   }
   useEffect(() => {
     getQuote();
