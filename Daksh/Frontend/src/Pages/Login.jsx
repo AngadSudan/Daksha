@@ -35,10 +35,13 @@ function Login() {
             withCredentials: true  
         })
         .then((response) => {  
-            console.log(response.data); 
-            localStorage.setItem('sessionId',true);
-            window.location.href = "/";  
-        })
+            // console.log(response.data);
+
+            localStorage.setItem('sessionID',response.data.sessionID);
+            localStorage.setItem('adminID',response.data.admin);
+            localStorage.setItem('user',response.data.user);
+            window.location.href = "/";
+          })
         .catch((error) => {  
             console.error(error);   
             alert("Didn't LogIn");

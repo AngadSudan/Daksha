@@ -6,11 +6,19 @@ const UserProvider = ({ children }) => {
     const[login,setLogin]= React.useState('');   
     const[Admin,SetAdmin]=React.useState('');
     const dataupdation= async()=>{
-        const user=await axios.get(`${configure.Endpoint}`);
-        console.log(user);
-        if(user){
-            localStorage.setItem('sessionId',user.data);
-            localStorage.setItem('admin',user.data)
+        const isSignnedin=localStorage.getItem('sessionID');
+        if(!isSignnedin){
+            setLogin(false);
+        }else{
+            setLogin(true);
+        }
+
+        const isAdmin=localStorage.getItem('adminID');
+        console.log('isAdmin',isAdmin);
+        if(!isAdmin){
+            SetAdmin(false);
+        }else{
+            SetAdmin(true);
         }
     }
     useEffect(()=>{

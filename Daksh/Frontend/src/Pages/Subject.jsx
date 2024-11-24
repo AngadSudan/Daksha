@@ -1,11 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
-import UserContext from '../Context/User.context';
 import { NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 import configure from '../Conf/configure';
 
 function Subject() {
-  const { Admin } = useContext(UserContext);
+  const Admin= localStorage.getItem('adminID');
   const { id } = useParams();
   const [links, setLinks] = useState([]);
   const [chapters, setChapters] = useState([]);
@@ -13,6 +12,8 @@ function Subject() {
   const [loading, setLoading] = useState(false);
 
   const SubjectData = async (chapter) => {
+    console.log(Admin);
+    
     try {
       setLoading(true);
       setActiveChapter(chapter);
@@ -132,7 +133,7 @@ function Subject() {
         </div>
 
         {/* Add Button */}
-        {Admin && (
+        {Admin==='true' && (
           <NavLink to="upload">
             <button className="fixed bottom-40 right-12 w-14 h-14 bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center text-2xl">
               <span className="transform transition-transform hover:scale-110">+</span>

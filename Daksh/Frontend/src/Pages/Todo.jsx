@@ -14,7 +14,7 @@ function Todo() {
   }
   const Delete=(index)=>{
     const id= data[index]._id
-    axios.delete(`${configure.Endpoint}/Todo/${id}`);
+    axios.delete(`${configure.Endpoint}/Todo/${localStorage.getItem('user')}/${id}`);
     alert('deleted')
     setCounter(counter-1);
 }
@@ -28,7 +28,7 @@ function Todo() {
   }
 
   const dataQuery=async()=>{
-    const response = await axios.get(`${configure.Endpoint}/Todo`)
+    const response = await axios.get(`${configure.Endpoint}/Todo/${localStorage.getItem('user')}`)
       .then((res) => res.data)
       .catch((err) => {
         alert('error occured');
@@ -36,18 +36,23 @@ function Todo() {
       });
     setData(response);
   }
-  const [counter, setCounter]= useState(0);
-  console.log(data);
-  
+  const [counter, setCounter]= useState(0);  
   const submission=async(e)=>{
     e.preventDefault();
-    const B={Task,Status:false};
+    const B={Task,Status:false,userid:localStorage.getItem('user')};
     await axios.post(`${configure.Endpoint}/Todo`, B);
     setTask("");
     setCounter(counter+1);
   }
   useEffect(()=>{
-    dataQuery();
+    setTimeout(() => {
+      if(localStorage.getItem('user')===null){
+        alert('please login or signup first')
+        window.location.href = "/";
+      }else{
+        dataQuery();
+      }
+    },100);
   },[counter]);
 
 

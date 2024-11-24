@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {Header} from '../Components/index'
 import Spline from '@splinetool/react-spline';
 import about from '../Images/homepage.png'
+import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import IITD from '../Images/IITD.png'
 import BITSPILANI from '../Images/BITSPILANI.png'
@@ -12,6 +13,7 @@ import { AnimatedTooltip } from '../Components/ui/animated-tooltip';
 import Review from '../Components/review';
 import {Orbitingcircle} from '../Components/orbitingcircle';
 import ContactForm from '../Components/ContactForm';
+import UserContext from '../Context/User.context';
 
 function wordWriter(word,speed=40){
   const initial=[]
@@ -57,7 +59,7 @@ function wordWriter(word,speed=40){
   return displayedLetters;
 }
 function Landing() {
-  
+  const {login}= useContext(UserContext);
   const items= [{id:1,name:'IIT DELHI',image:IITD},{id:2,name:'BITS PILANI',image:BITSPILANI},{id:3,name:'University of Virginia',image:uov},{id:4,name:'VIT',image:VIT},{id:5,name:'FRMS',image:frms}]
   const userreviews= [
     {name:'Rahul Jha', review:'This app is literally the best thing that has happened to me in my entire life'},
@@ -74,6 +76,40 @@ function Landing() {
         transition={{delay:2.25, duration:1}}
         className='text-center mx-auto text-xl text-wrap font-bold'
         >A OneStop Solution For Notes Management</motion.p>
+        {
+      login===false && 
+          <motion.div 
+          className='mx-auto mt-4 flex gap-8'
+          initial={{opacity:0}}
+          animate={{opacity:1}}
+          transition={{delay:3, duration:1}}
+          >
+            <button className="transition-all duration-300 ease-in-out">
+                  <NavLink 
+                    to="Login" 
+                    className={({ isActive }) =>
+                      isActive 
+                        ? 'bg-amber-100 px-4 py-2 rounded-lg text-amber-900 shadow-inner font-semibold text-base sm:text-lg md:text-xl hover:bg-amber-200' 
+                        : 'bg-amber-50 px-4 py-2 rounded-lg text-amber-800 hover:bg-amber-100 text-base sm:text-lg md:text-xl'
+                    }
+                  >
+                    Login
+                  </NavLink>
+                </button>
+                <button className="transition-all duration-300 ease-in-out">
+                  <NavLink 
+                    to="Signup" 
+                    className={({ isActive }) =>
+                      isActive 
+                        ? 'bg-amber-100 px-4 py-2 rounded-lg text-amber-900 shadow-inner font-semibold text-base sm:text-lg md:text-xl hover:bg-amber-200' 
+                        : 'bg-amber-50 px-4 py-2 rounded-lg text-amber-800 hover:bg-amber-100 text-base sm:text-lg md:text-xl'
+                    }
+                  >
+                    Signup
+                  </NavLink>
+                </button>
+          </motion.div>
+      }
       </div>
       <div className='w-fullh-fit bg-[#d7b579] p-8 '>
         <h1 className='text-center text-4xl font-bold '>Our Partners</h1>

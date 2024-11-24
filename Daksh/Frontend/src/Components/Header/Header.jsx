@@ -19,32 +19,37 @@ function Header() {
                 <li><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'}  to="Notes">Notes</NavLink></li>
                 <li ><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="Doubts">Doubts</NavLink></li>
                 <li><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="Tracker">ATS</NavLink></li>
-                
+                <button onClick={()=>{
+                  localStorage.clear();
+                  window.location.href = "/";
+                }} className="transition-all duration-300 ease-in-out">
+                  Logout
+                </button>
                 </>:<>
                 <button className="transition-all duration-300 ease-in-out">
-  <NavLink 
-    to="Login" 
-    className={({ isActive }) =>
-      isActive 
-        ? 'bg-amber-100 px-4 py-2 rounded-lg text-amber-900 shadow-inner font-semibold text-base sm:text-lg md:text-xl hover:bg-amber-200' 
-        : 'bg-amber-50 px-4 py-2 rounded-lg text-amber-800 hover:bg-amber-100 text-base sm:text-lg md:text-xl'
-    }
-  >
-    Login
-  </NavLink>
-</button>
-<button className="transition-all duration-300 ease-in-out">
-  <NavLink 
-    to="Signup" 
-    className={({ isActive }) =>
-      isActive 
-        ? 'bg-amber-100 px-4 py-2 rounded-lg text-amber-900 shadow-inner font-semibold text-base sm:text-lg md:text-xl hover:bg-amber-200' 
-        : 'bg-amber-50 px-4 py-2 rounded-lg text-amber-800 hover:bg-amber-100 text-base sm:text-lg md:text-xl'
-    }
-  >
-    Signup
-  </NavLink>
-</button>
+                  <NavLink 
+                    to="Login" 
+                    className={({ isActive }) =>
+                      isActive 
+                        ? 'bg-amber-100 px-4 py-2 rounded-lg text-amber-900 shadow-inner font-semibold text-base sm:text-lg md:text-xl hover:bg-amber-200' 
+                        : 'bg-amber-50 px-4 py-2 rounded-lg text-amber-800 hover:bg-amber-100 text-base sm:text-lg md:text-xl'
+                    }
+                  >
+                    Login
+                  </NavLink>
+                </button>
+                <button className="transition-all duration-300 ease-in-out">
+                  <NavLink 
+                    to="Signup" 
+                    className={({ isActive }) =>
+                      isActive 
+                        ? 'bg-amber-100 px-4 py-2 rounded-lg text-amber-900 shadow-inner font-semibold text-base sm:text-lg md:text-xl hover:bg-amber-200' 
+                        : 'bg-amber-50 px-4 py-2 rounded-lg text-amber-800 hover:bg-amber-100 text-base sm:text-lg md:text-xl'
+                    }
+                  >
+                    Signup
+                  </NavLink>
+                </button>
                 </>
             }
         </ul>
@@ -98,6 +103,14 @@ function Header() {
                 </div>
                 <div className='h-16 z-[9999] bg-white w-full hover:border-white hover:border-2  '>
                   <li><NavLink  className={({ isActive }) =>isActive ? 'text-red-500 text-2xl' : 'text-gray-800'} to="Tracker">ATS</NavLink></li>
+                </div>
+                <div className='h-16 z-[9999] bg-white w-full hover:border-white hover:border-2  '>
+                  <button onClick={()=>{
+                    localStorage.clear();
+                    window.location.href='/';
+                  }} className="transition-all duration-300 ease-in-out">
+                    Logout
+                  </button>
                 </div>
               </>
           }
