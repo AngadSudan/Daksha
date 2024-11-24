@@ -66,8 +66,7 @@ function Landing() {
   ]
   return (
     <div className='h-[100svh]'>
-      {/* hero section  */}
-      <div className='h-[90svh] w-full bg-[#ffe8c1] flex flex-col justify-center'  >
+      <div className='h-[70svh] w-full bg-[#ffe8c1] flex flex-col justify-center'  >
         <h1 className='text-center mx-auto text-6xl text-wrap md:text-7xl font-bold'>{wordWriter('DAKSH')}</h1>
         <motion.p
         initial={{x:"-100%", opacity:0}}
@@ -76,7 +75,6 @@ function Landing() {
         className='text-center mx-auto text-xl text-wrap font-bold'
         >A OneStop Solution For Notes Management</motion.p>
       </div>
-      {/* our partners  */}
       <div className='w-fullh-fit bg-[#d7b579] p-8 '>
         <h1 className='text-center text-4xl font-bold '>Our Partners</h1>
         <div className='md:w-[70%] w-[90%] -z-10 h-fit p-8 mx-auto md:flex '>
@@ -91,9 +89,7 @@ function Landing() {
           <Orbitingcircle />
         </div>
       </div>
-      {/* <div className='xl:hidden w-screen p-8 h-[20%]'> */}
         <ContactForm />
-      {/* </div> */}
     </div>
   )
 }

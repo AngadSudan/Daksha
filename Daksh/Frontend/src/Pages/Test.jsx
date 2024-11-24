@@ -45,7 +45,7 @@ function Test() {
 
   return (
     <div className='h-[100svh] w-full grid place-items-center'>
-      <div className="max-w-2xl pt-[7rem] mx-auto p-4">
+      <div className="max-w-2xl mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4">Resume ATS Scanner</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -59,7 +59,7 @@ function Test() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
+            className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 disabled:bg-gray-400"
           >
             {loading ? 'Scanning...' : 'Scan Resume'}
           </button>

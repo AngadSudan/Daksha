@@ -42,9 +42,9 @@ function Doubts() {
 
   
   return (
-    <div className='[mt-8rem] h-[95svh] w-full flex flex-col-reverse lg:flex-row-reverse'>
+    <div className='h-[90svh] w-full flex flex-col-reverse lg:flex-row-reverse'>
   <motion.div 
-    className='w-full lg:w-[30%] h-fit mt-8 lg:mt-32 mx-auto lg:ml-20 p-4 bg-[#a16a45] text-[#ffe8c1] shadow-sm'
+    className='w-full lg:w-[30%] h-fit mt-3 mx-auto lg:ml-20 p-2 bg-[#a16a45] text-[#ffe8c1] shadow-sm'
     initial={{x: "100%", y: "-100%", opacity: 0}}
     animate={{x: 0, y: 0, opacity: 1}}
     transition={{delay: 0.7, duration: 1}}
@@ -123,7 +123,7 @@ function Doubts() {
       <button 
       onClick={submitted} 
       type="Submit" 
-      className='bg-[#68472f] text-2xl p-4 w-[60%] mx-auto rounded-lg mt-4 text-white'>{submit}</button>
+      className='bg-orange-500 text-2xl p-4 w-[60%] mx-auto rounded-lg mt-4 text-white'>{submit}</button>
     </form>
   </motion.div>
 
