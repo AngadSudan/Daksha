@@ -14,12 +14,12 @@ const Orbitingcircle = () => {
   };
 
   return (
-    <div className="w-[50%] mx-auto ml-48 min-h-full flex items-center justify-center p-4">
+    <div className="w-[40%] mx-auto ml-48 min-h-full flex items-center justify-center p-4">
       <div className="relative w-[min(100%,600px)] aspect-square">
         {/* Orbit tracks */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-[90%] h-[90%] border border-gray-100 rounded-full" />
-          <div className="w-[70%] h-[70%] border border-gray-100 rounded-full absolute" />
+          {/* <div className="w-[90%] h-[90%] border border-gray-100 rounded-full" />
+          <div className="w-[70%] h-[70%] border border-gray-100 rounded-full absolute" /> */}
         </div>
 
         

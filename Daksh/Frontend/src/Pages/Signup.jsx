@@ -70,7 +70,7 @@ function Signup() {
             value={rollnumber}
             onChange={(e)=>{setrollnumber(e.target.value)}}
             type="text"
-            placeholder="Enter your email"
+            placeholder="Enter your Rollnumber"
           />
         </label>
 

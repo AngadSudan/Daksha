@@ -1,12 +1,15 @@
 import React, { useState , useEffect} from 'react'
 import src from '../Images/Chitkara.svg'
+import MCP from '../Images/MCP.jpg'
+import FEE from '../Images/React.webp'
+import Python from '../Images/Python.webp'
 import {  NoteCard } from '../Components'
 import {motion} from "framer-motion"
 import { use } from 'framer-motion/client'
 function Notes() {
   const [RandomQuote,setRandomQoute]= useState('')
   const getQuote=async()=>{
-    await fetch('https://favqs.com/api/qotd')
+    await fetch('https://favqs.com/e75a0e531d6d448db5dafbc4d5cdc587/qotd')
     .then(res => res.json())
     .then(data => setRandomQoute(data.quote.body))
     .catch((err)=>{console.log(err); setRandomQoute('When live gives you lemon, make a lemonade')});
@@ -34,10 +37,10 @@ function Notes() {
         </div>
         </div>
         {/* describe about the notes section   */}
-        <NoteCard src={src} path='/Subject/MCP' Heading="MCP" />
-        <NoteCard src={src} path='/Subject/FEE' Heading="FEE" />
-        <NoteCard src={src} path='/Subject/CASA' Heading="CASA" />
-        <NoteCard src={src} path='/Subject/PYTHON' Heading="Python" />
+        <NoteCard src={MCP} path='/Subject/MCP' description='Physics is theoretical but the Fun is Real!' Heading="MCP" />
+        <NoteCard src={FEE} path='/Subject/FEE' description='A Good plan includes a good UI' Heading="FEE" />
+        <NoteCard src={src} path='/Subject/CASA' description='Any Equation means Nothing to me Unless it expresses a thought of God ' Heading="CASA" />
+        <NoteCard src={Python} path='/Subject/PYTHON' description='First Solve the Problem Then write the Code' Heading="Python" />
       </motion.div>
     </>
   )

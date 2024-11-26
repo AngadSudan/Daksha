@@ -121,8 +121,17 @@ function Landing() {
         <Review userreviews={userreviews} />
       </div>
       <div className='h-[40svh] lg:h-[80svh] hidden lg:flex  w-screen bg-[#d7b579]'>
-        <div className='h-fit p-8 w-full '>
+        <div className='h-fit p-8 w-full xl:flex'>
+          <div className=' absolute w-[30%] flex flex-col gap-[4vh]'>
+            <div className='h-[35%] w-full grid place-items-center bg-white rounded-xl'>Improves Notes Management</div>
+            <div className='h-[35%] w-full grid place-items-center bg-white rounded-xl'>Doubt Solving</div>
+          </div>
           <Orbitingcircle />
+          <div className='absolute w-[30%] flex flex-col gap-[4vh]'>
+            <div className='h-[35%] w-full grid place-items-center bg-white rounded-xl'> ATS Tracker</div>
+            <div className='h-[35%] w-full grid place-items-center bg-white rounded-xl'>Personalised just for you</div>
+          </div>
+          
         </div>
       </div>
         <ContactForm />
