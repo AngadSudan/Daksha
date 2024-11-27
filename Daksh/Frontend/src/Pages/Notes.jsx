@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from 'react'
-import src from '../Images/Chitkara.svg'
-import MCP from '../Images/MCP.jpg'
+import src from '../Images/CASA.png'
+import MCP from '../Images/MCP.png'
 import FEE from '../Images/React.webp'
 import Python from '../Images/Python.webp'
 import {  NoteCard } from '../Components'

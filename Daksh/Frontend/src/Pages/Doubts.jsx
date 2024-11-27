@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {motion} from 'framer-motion'
 import configure from '../Conf/configure';
 import axios from 'axios';
+import src from '../Images/doubts.png'
 // import configure from '../Conf/configure';
 function Doubts() {
   const [name,setName]= useState('');
@@ -138,12 +139,12 @@ function Doubts() {
       </motion.div>
 
       <motion.div 
-        className='w-full lg:w-[40%] pt-8 lg:pt-[10rem] h-[100%]'
+        className='w-full lg:w-[40%] pt-8 h-[100%]'
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         transition={{duration: 1.5, delay: 0.7}}
       >
-        <img className='mx-auto hidden lg:block' src="https://media.istockphoto.com/id/1596438370/vector/man-with-question-mark.jpg?s=612x612&w=0&k=20&c=5DKnRkyVsqE2E_QA_6nB2X4GZgXkBM6vOFsJL_g6Lhk=" alt="Question Image" />
+        <img className='mx-auto hidden lg:block' src={src} />
       </motion.div>
     </div>
   )

@@ -75,7 +75,7 @@ function Landing() {
         animate={{x:0, opacity:1}}
         transition={{delay:2.25, duration:1}}
         className='text-center mx-auto text-xl text-wrap font-bold'
-        >A OneStop Solution For Notes Management</motion.p>
+        >A OneStop Solution For ToDo List and Notes Management</motion.p>
         {
       login===false && 
           <motion.div 
@@ -120,21 +120,45 @@ function Landing() {
       <div className=' overflow-hidden  h-fit w-screen grid place-items-center bg-[#ffe8c1]' >
         <Review userreviews={userreviews} />
       </div>
-      <div className='h-[40svh] lg:h-[80svh] hidden lg:flex  w-screen bg-[#d7b579]'>
-        <div className='h-fit p-8 w-full xl:flex'>
-          <div className=' absolute w-[30%] flex flex-col gap-[4vh]'>
-            <div className='h-[35%] w-full grid place-items-center bg-white rounded-xl'>Improves Notes Management</div>
-            <div className='h-[35%] w-full grid place-items-center bg-white rounded-xl'>Doubt Solving</div>
-          </div>
+      <div className='h-[40svh] lg:h-[80svh] lg:flex lg:justify-center gap-[15rem] w-screen bg-[#d7b579]'>
+        {/* <div className='h-fit p-8 w-full xl:flex'> */}
+          {/* <div className=' absolute w-[30%] flex flex-col gap-[4vh]'>
+            <div className='h-[35%] w-full grid place-items-center bg-orange-500 text-white font-semibold rounded-xl'>
+              <h1>
+                Improves Notes Management
+              </h1>
+            </div>
+            <div className='h-[35%] w-full grid place-items-center bg-orange-500 text-white font-semibold rounded-xl'>Doubt Solving</div>
+          </div> */}
+        {/* </div> */}
           <Orbitingcircle />
-          <div className='absolute w-[30%] flex flex-col gap-[4vh]'>
-            <div className='h-[35%] w-full grid place-items-center bg-white rounded-xl'> ATS Tracker</div>
-            <div className='h-[35%] w-full grid place-items-center bg-white rounded-xl'>Personalised just for you</div>
+        {/* <div className='h-fit p-8 w-full xl:flex'>
+          <div className=' absolute w-[30%] flex flex-col gap-[4vh]'>
+            <div className='h-[35%] w-full grid place-items-center bg-orange-500 text-white font-semibold rounded-xl'>
+              <h1>
+                Improves Notes Management
+              </h1>
+            </div>
+            <div className='h-[35%] w-full grid place-items-center bg-orange-500 text-white font-semibold rounded-xl'>Doubt Solving</div>
           </div>
-          
+        </div> */}
+        <div>
+          <div className='flex flex-col gap-4 mr-12'></div>
+            <div className='h-[18%] my-5 mr-44 w-full grid place-items-center bg-orange-500 text-white font-semibold rounded-xl'>
+              <h1>Improves Notes Management</h1>
+            </div>
+            <div className='h-[18%] mb-5 mr-44 w-full grid place-items-center bg-orange-500 text-white font-semibold rounded-xl'>
+              <h1>Doubt Solving</h1>
+            </div>
+            <div className='h-[18%] mb-5 mr-44 w-full grid place-items-center bg-orange-500 text-white font-semibold rounded-xl'>
+              <h1>Collaborative Learning</h1>
+            </div>
+            <div className='h-[18%] mb-5 mr-44 w-full grid place-items-center bg-orange-500 text-white font-semibold rounded-xl'>
+              <h1>Resource Sharing</h1>
+            </div>
+          </div>
         </div>
-      </div>
-        <ContactForm />
+      <ContactForm />
     </div>
   )
 }
